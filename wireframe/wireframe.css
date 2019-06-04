@@ -22,6 +22,7 @@ h1 {
 
 h2 {
   margin-bottom: 50px;
+  text-align: center;
 }
 
 h1, h2 {
@@ -37,7 +38,7 @@ label {
   margin: 15px;
 }
 
-.submit_button {
+.submit_button, .restart_button {
   margin-top: 50px;
 }
 
@@ -47,4 +48,12 @@ label {
 
 .score {
   text-align: center;
+}
+
+.grade {
+  padding: 15px;
+}
+
+.score_range {
+  padding-right: 15px;
 }
