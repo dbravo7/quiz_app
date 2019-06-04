@@ -7,6 +7,7 @@ body, .button_container {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin: 0;
 }
 
 .start_button {
@@ -44,10 +45,6 @@ label {
 
 .answer {
   padding: 10px;
-}
-
-.score {
-  text-align: center;
 }
 
 .grade {
