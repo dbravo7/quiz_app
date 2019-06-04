@@ -1,0 +1,12 @@
+/* font-family: 'Playfair Display', serif;
+font-family: 'Source Sans Pro', sans-serif; */
+
+* {  
+ box-sizing: border-box;
+}
+
+.start_page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
