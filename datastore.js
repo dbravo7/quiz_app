@@ -88,4 +88,4 @@ const Q_A = [
     option4: 'year',
     answer: 'month',
     image: 'images/illiad.jpg'
-  }]
+  }];
