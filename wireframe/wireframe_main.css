@@ -2,7 +2,7 @@
   box-sizing: border-box; 
 }
 
-.main_page, .question_page {
+.main_page, .question_page, .answer_page, .final_page {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -21,17 +21,21 @@
   margin-top: 20%;
 } 
 
-.question_header {
+.question_header, .answer_page_h1 {
   margin-top: 16%;
+}
+
+.results_page_h1 {
+  margin-top: 15%; 
 }
 
 .question_field {
   width: 100%; 
 }
 
-.question_form {
+.question_form, .answer_field {
   /* border: 1px solid black; */
-  width: 35%;
+  width: 34%;
 }
 
 h2 {
