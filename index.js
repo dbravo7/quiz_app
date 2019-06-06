@@ -58,7 +58,7 @@ function questionTemplate() {
 function 
 
 function chooseQuestion() {
-  let idx = Math.floor(Math.random() * 10);
+  
   if (asked_questions.includes(idx)) {
     chooseQuestion();
   } else {
