@@ -91,16 +91,16 @@ function populateQuestions() {
       answer: 'month',
       image: 'images/illiad.jpg'
     }]);
-  return Q_A
+  return Q_A;
 }
 
 function shuffleQuestions(Q_A) {
-  let questions = Q_A.length; 
-  let shuffled = [];
-  while (questions > 0) {
-    let idx = Math.floor(Math.random() * questions);
-    shuffled.push(Q_A[idx]);
-    questions--;
+  let i = Q_A.length; 
+  while (i) {
+    let idx = Math.floor(Math.random() * i--);
+    new_idx = Q_A[i];
+    Q_A[i] = Q_A[idx];
+    Q_A[idx] = new_idx; 
   }
-  return shuffled; 
+  return Q_A; 
 }
