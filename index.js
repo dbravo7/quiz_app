@@ -42,20 +42,57 @@ function questionTemplate() {
         </label>
       </fieldset>
       <div class="button_container">
-        <button type="button" class="question_page_button">Submit Answer</button>
+        <button type="submit" class="question_page_button">Submit Answer</button>
       </div>
     </form>
   </section>`;
 }
 
-function answerTemplate() {
+function answerTemplate(result) {
   const i = questions.length -1; 
+
+  return `<header class="answer_page_h1">
+    <h1>${result}</h1>
+  </header>
+
+  <section class="answer_page">
+    <header>
+      <h2>${questions[i].question}</h2>
+    </header>
+    <fieldset class="answer_field">
+      <div class="answer">
+        <input type="radio" name="answer" checked>
+        <span>${questions[i].answer}</span>
+      </div>
+      <img src="${questions[i].image}" alt="book cover">
+    </fieldset>
+    <div class=" button_container">
+      <button type="button" class="answer_page_button">Next Question</button>
+      <p class="score">${correct_answers} of 10 correct!</p>
+    </div>
+  </section>`;
 
 }
 
 // render questions in DOM 
-function renderQuestion() {
+function renderQuestionPage() {
   $('.question_answer_form').html(questionTemplate());
+}
+
+// render answer in DOM
+function renderAnswerPage(result) {
+  $('.question_answer_form').html(answerTemplate(result));
+}
+
+// returns output of either correct or wrong answer functions
+function checkAnswer(ans) {
+  const i = questions.length -1;
+  if (ans === questions[i].answer) {
+    increaseScore(); 
+    return correctAnswer();
+  } else {
+    return wrongAnswer();
+  }
 }
 
 // input text when wrong answer selected
@@ -70,23 +107,34 @@ function correctAnswer() {
   return answers[idx];
 }
 
-// raise score by 1
-// function increaseScore() {
-//   return correct_answers += 1; 
-// }
+// raises score by 1
+function increaseScore() {
+  correct_answers += 1; 
+}
 
 // on start button 'click' call takeQuiz  
 function handleStartButton() {
-  $('.start_button').on('click', event => {
-    $('main').remove(); 
-    renderQuestion();
+  $('main').on('click', '.start_button', event => {
+    event.preventDefault();
+    $('.main_page').remove();
+    renderQuestionPage();
   });
 }
 
+// on submit, check if question is correct and pass as argument to answerTemplate
 function handleSubmitButton() {
-  $('.question_page_button').on('click', event => {
-    answerTemplate();
+  $('form').on('submit', function (event) {
+    event.preventDefault();
+    const answer = $('input:checked').siblings('span');
+    const result = checkAnswer(answer);
+    renderAnswerPage(result);
+    removeQuestion(); 
   });
+}
+
+// removes last object in array `questions` 
+function removeQuestion() {
+  questions.pop();
 }
 
 // function calls to setup and play game
