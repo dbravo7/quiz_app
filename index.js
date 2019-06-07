@@ -8,14 +8,13 @@ $(document).ready(function () { // startquiz button goes to first question
   
 'use strict';
 
-let question_num = 1;
 let correct_answers = 0; 
 const questions = populateQuestions();
 
 function questionTemplate() {
   const i = questions.length - 1; 
   return `<header class="question_header">
-    <h1>Question ${question_num} of 10</h1>
+    <h1>Question ${(10 - questions.length) + 1} of 10</h1>
   </header>
   
   <section class="question_page">
@@ -65,10 +64,11 @@ function answerTemplate(result) {
         <span>${questions[i].answer}</span>
       </div>
       <a href=${questions[i].link}> 
-      <img src="${questions[i].image}" alt="book cover">
+        <img src="${questions[i].image}" alt="book cover">
+      </a>
     </fieldset>
     <div class=" button_container">
-      <button type="button" class="answer_page_button">Next Question</button>
+      <button type="button" class="next_button">Next</button>
       <p class="score">${correct_answers} of 10 correct!</p>
     </div>
   </section>`;
@@ -103,8 +103,15 @@ function wrongAnswer() {
 
 // input text when correct answer selected
 function correctAnswer() {
-  const answers = ['Excellent!', 'Perfect!', 'Right On!', 'Good Job!']; 
-  let idx = Math.floor(Math.random() * 4);
+  const answers = [
+    'Excellent!', 
+    'Perfect!', 
+    'Right On!', 
+    'Good Job!', 
+    'You got it!',
+    'Spot on!',
+  ]; 
+  let idx = Math.floor(Math.random() * 6);
   return answers[idx];
 }
 
@@ -126,11 +133,34 @@ function handleStartButton() {
 function handleSubmitButton() {
   $('body').on('submit', 'form', function (event) {
     event.preventDefault();
-    const answer = $('input:checked').siblings('span');
+    const selected = $('input:checked').siblings('span');
+    const answer = selected.text(); 
     const result = checkAnswer(answer);
     renderAnswerPage(result);
-    removeQuestion(); 
+    removeQuestion();
   });
+}
+
+// Calls render next question or results page 
+function handleNextButton() {
+  $('body').on('click', '.next_button', event => {
+    event.preventDefault();  
+    if (testFinished()) {
+      renderResultsPage();
+    } else {
+      // incrementQuestionNum();
+      renderQuestionPage();
+    }
+  });
+}
+
+function incrementQuestionNum() {
+  question_num += 1; 
+}
+
+// Return booleans as to whether test is finished 
+function testFinished() {
+  return questions.length < 1; 
 }
 
 // removes last object in array `questions` 
@@ -147,6 +177,7 @@ function takeQuiz() {
   // };
   handleStartButton();
   handleSubmitButton();
+  handleNextButton();
 }
 
 $(takeQuiz);
@@ -203,7 +234,7 @@ function populateQuestions() {
       option3: 'One brother marries and then leaves his spouse to join a monastery',
       option4: 'None of the above',
       answer: 'None of the above',
-      image: 'images/the-brothers-karamazon.jpg',
+      image: 'images/the-brothers-karamazov.jpg',
       link: 'https://www.amazon.com/Brothers-Karamazov-Novel-Parts-Epilogue/dp/0140449248/ref=sr_1_3?crid=2UR2WVFRHB75S&keywords=brothers+karamazov&qid=1559871168&s=gateway&sprefix=brothers+kara%2Caps%2C123&sr=8-3'
     },
     {
