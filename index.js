@@ -11,6 +11,7 @@ $(document).ready(function () { // startquiz button goes to first question
 let correct_answers = 0; 
 const questions = populateQuestions();
 
+// html for question to be inserted in DOM 
 function questionTemplate() {
   const i = questions.length - 1; 
   return `<header class="question_header">
@@ -47,6 +48,7 @@ function questionTemplate() {
   </section>`;
 }
 
+// html for answer page to be inserted in DOM 
 function answerTemplate(result) {
   const i = questions.length -1; 
 
@@ -75,6 +77,40 @@ function answerTemplate(result) {
 
 }
 
+// 
+function resultsTemplate() {
+  return `<header class="results_page_h1">
+    <h1>You got ${correct_answers} out of 10 Correct!</h1>
+  </header>
+  
+  <section class="final_page">
+    <header>
+      <h2>See your level below</h2>
+    </header>
+    <fieldset>
+      <div class="grade">
+        <div class="score_range">10 of 10</div>
+        <span>Literary Master!</span>
+      </div>
+      <div class="grade">
+        <div class="score_range">8-9 of 10</div>
+        <span>You know literature</span>
+      </div>
+      <div class="grade">
+        <div class="score_range">6-7 of 10</div>
+        <span>The library is your favorite hangout</span>
+      </div>
+      <div class="grade">
+        <div class="score_range">0-5 of 10</div>
+        <span>Keep up the reading, there is a lot of literature to still explore</span>
+      </div>
+    </fieldset>
+    <div class="button_container">
+      <button type="button" class="restart_button">Try Again?</button>
+    </div>
+  </section>`;
+}
+
 // render questions in DOM 
 function renderQuestionPage() {
   $('.question_answer_form').html(questionTemplate());
@@ -83,6 +119,11 @@ function renderQuestionPage() {
 // render answer in DOM
 function renderAnswerPage(result) {
   $('.question_answer_form').html(answerTemplate(result));
+}
+
+// render results at end of test to DOM 
+function renderResultsPage() {
+  $('.question_answer_form').html(resultsTemplate());
 }
 
 // returns output of either correct or wrong answer functions
@@ -160,7 +201,8 @@ function incrementQuestionNum() {
 
 // Return booleans as to whether test is finished 
 function testFinished() {
-  return questions.length < 1; 
+  // return questions.length < 1;
+  return 10 === 10; //just for testing results page, then remove  
 }
 
 // removes last object in array `questions` 
@@ -168,13 +210,8 @@ function removeQuestion() {
   questions.pop();
 }
 
-// function calls to setup and play game
+// calls to setup and play game
 function takeQuiz() {
-  // const questions = populateQuestions();
-  // const tally = {
-  //   question_num: 1,
-  //   correct_answers: 0
-  // };
   handleStartButton();
   handleSubmitButton();
   handleNextButton();
