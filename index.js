@@ -9,7 +9,7 @@ $(document).ready(function () { // startquiz button goes to first question
 'use strict';
 
 let correct_answers = 0; 
-const questions = populateQuestions();
+let questions = populateQuestions();
 
 // html for question to be inserted in DOM 
 function questionTemplate() {
@@ -74,10 +74,9 @@ function answerTemplate(result) {
       <p class="score">${correct_answers} of 10 correct!</p>
     </div>
   </section>`;
-
 }
 
-// 
+// html for results page to be inserted in DOM 
 function resultsTemplate() {
   return `<header class="results_page_h1">
     <h1>You got ${correct_answers} out of 10 Correct!</h1>
@@ -156,15 +155,10 @@ function correctAnswer() {
   return answers[idx];
 }
 
-// raises score by 1
-function increaseScore() {
-  correct_answers += 1; 
-}
-
 // on start button 'click' call takeQuiz  
 function handleStartButton() {
   $('main').on('click', '.start_button', event => {
-    event.preventDefault();
+    // event.preventDefault();
     $('main').remove();
     renderQuestionPage();
   });
@@ -185,7 +179,7 @@ function handleSubmitButton() {
 // Calls render next question or results page 
 function handleNextButton() {
   $('body').on('click', '.next_button', event => {
-    event.preventDefault();  
+    // event.preventDefault();  
     if (testFinished()) {
       renderResultsPage();
     } else {
@@ -195,14 +189,19 @@ function handleNextButton() {
   });
 }
 
-function incrementQuestionNum() {
-  question_num += 1; 
+// restarts the quiz and resets variables 
+function handleRestartButton() {
+  $('body').on('click', '.restart_button', event => {
+    correct_answers = 0;
+    questions = populateQuestions();
+    renderQuestionPage();
+  });
 }
 
 // Return booleans as to whether test is finished 
 function testFinished() {
-  // return questions.length < 1;
-  return 10 === 10; //just for testing results page, then remove  
+  return questions.length < 1;
+  // return 10 === 10; //just for testing results page, then remove  
 }
 
 // removes last object in array `questions` 
@@ -210,11 +209,17 @@ function removeQuestion() {
   questions.pop();
 }
 
+// raises score by 1
+function increaseScore() {
+  correct_answers++;
+}
+
 // calls to setup and play game
 function takeQuiz() {
   handleStartButton();
   handleSubmitButton();
   handleNextButton();
+  handleRestartButton();
 }
 
 $(takeQuiz);

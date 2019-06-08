@@ -5,24 +5,45 @@ font-family: 'Source Sans Pro', sans-serif; */
  box-sizing: border-box;
 }
 
-body {
-  font: 'Source Sans Pro', sans-serif;
+html {
+  padding: 0;
+  margin: 0; 
+  background: url('images/library-header copy.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover; 
+  -moz-background-size: cover;
+  -o-background-size: cover; 
+  background-size: cover;
 }
 
-.display_none {
-  display: none;
+
+body {
+  font: 'Source Sans Pro', sans-serif;
 }
 
 .main_page_h1 {
   text-align: center;
   margin-top: 20%;
+  font-size: 1.5em;
+  color: #BF7417; 
+  text-shadow: 
+		-3px -3px 0  #402708,
+		3px -3px 0  #402708,
+		-3px 3px 0  #402708,
+		3px 3px 0  #402708;
 }
 
-.main_page, .question_page, .answer_page, .final_page {
+.start_page, .question_page, .answer_page, .final_page {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+   
+}
+
+.start_pageh2 {
+  color: #CC3F0E;
+  font-size: 1em;
+  text-shadow: 3px 3px 4px #05F2BF;
 }
 
 h1, h2 {
@@ -35,7 +56,14 @@ h2 {
 
 .start_button {
   width: 200px;
-  height: 80px;
+  height: 60px;
   border-radius: 25px;
   font-size: 20px;
+  border: 1px solid #BF7417;
+  background-color: #FFA538;
+  color: #402708; 
+}
+
+.start_button:active {
+  background-color: #CC9F0E;
 }
