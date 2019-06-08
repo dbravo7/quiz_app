@@ -125,17 +125,6 @@ function renderResultsPage() {
   $('.question_answer_form').html(resultsTemplate());
 }
 
-// returns output of either correct or wrong answer functions
-function checkAnswer(ans) {
-  const i = questions.length -1;
-  if (ans === questions[i].answer) {
-    increaseScore(); 
-    return correctAnswer();
-  } else {
-    return wrongAnswer();
-  }
-}
-
 // input text when wrong answer selected
 function wrongAnswer() {
   return "The correct answer is ...";
@@ -158,8 +147,7 @@ function correctAnswer() {
 // on start button 'click' call takeQuiz  
 function handleStartButton() {
   $('main').on('click', '.start_button', event => {
-    // event.preventDefault();
-    $('main').remove();
+    $('.start_test').remove();
     renderQuestionPage();
   });
 }
@@ -179,11 +167,9 @@ function handleSubmitButton() {
 // Calls render next question or results page 
 function handleNextButton() {
   $('body').on('click', '.next_button', event => {
-    // event.preventDefault();  
     if (testFinished()) {
       renderResultsPage();
     } else {
-      // incrementQuestionNum();
       renderQuestionPage();
     }
   });
@@ -198,6 +184,17 @@ function handleRestartButton() {
   });
 }
 
+// returns output of either correct or wrong answer functions
+function checkAnswer(ans) {
+  const i = questions.length - 1;
+  if (ans === questions[i].answer) {
+    increaseScore();
+    return correctAnswer();
+  } else {
+    return wrongAnswer();
+  }
+}
+
 // Return booleans as to whether test is finished 
 function testFinished() {
   return questions.length < 1;
@@ -209,7 +206,7 @@ function removeQuestion() {
   questions.pop();
 }
 
-// raises score by 1
+// raise score by 1
 function increaseScore() {
   correct_answers++;
 }

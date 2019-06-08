@@ -41,9 +41,10 @@ body {
 }
 
 .start_pageh2 {
-  color: #CC3F0E;
+  color: #004D73;
   font-size: 1em;
   text-shadow: 3px 3px 4px #05F2BF;
+  text-align: center; 
 }
 
 h1, h2 {
