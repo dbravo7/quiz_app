@@ -14,29 +14,29 @@ let questions = populateQuestions();
 // html for question to be inserted in DOM 
 function questionTemplate() {
   const i = questions.length - 1; 
-  return `<header class="question_header">
+  return `<header class="question_page_h1">
     <h1>Question ${(10 - questions.length) + 1} of 10</h1>
   </header>
   
   <section class="question_page">
-    <header class="start_pageh2">
+    <header class="start_page_h2 question_page_h2">
       <h2>${questions[i].question}</h2>
     </header>
     <form class="questions_page question_form">
       <fieldset class="question_page question_field">
-        <label class="option">
+        <label class="option light">
           <input type="radio" name="answer" required>
           <span>${questions[i].option1}</span>
         </label>
-        <label class="option">
+        <label class="option dark">
           <input type="radio" name="answer" required>
           <span>${questions[i].option2}</span>
         </label>
-        <label class="option">
+        <label class="option light">
           <input type="radio" name="answer" required>
           <span>${questions[i].option3}</span>
         </label>
-        <label class="option">
+        <label class="option dark">
           <input type="radio" name="answer" required>
           <span>${questions[i].option4}</span>
         </label>
@@ -69,7 +69,7 @@ function answerTemplate(result) {
         <img src="${questions[i].image}" alt="book cover">
       </a>
     </fieldset>
-    <div class=" button_container">
+    <div class="button_container">
       <button type="button" class="next_button">Next</button>
       <p class="score">${correct_answers} of 10 correct!</p>
     </div>
@@ -211,6 +211,14 @@ function increaseScore() {
   correct_answers++;
 }
 
+// function highlightCheckedLabel() {
+//   $("input[type=radio]").change(function() {
+//     $("input[type=radio]").parent().removeClass('selected');
+//     $("input[type=radio]:checked").parent().addClass('selected');
+//     console.log("I am in the function :)");
+//   });
+// }
+
 // calls to setup and play game
 function takeQuiz() {
   handleStartButton();
@@ -267,7 +275,7 @@ function populateQuestions() {
     //   link: 'https://www.amazon.com/War-Peace-Vintage-Classics-Tolstoy/dp/1400079985/ref=sr_1_1_sspa?keywords=war+and+peace&qid=1559871209&s=gateway&sr=8-1-spons&psc=1'
     // },
     {
-      question: 'In the book, The Brothers Karamazov, which of the following is true?',
+      question: 'Which of the following took place in the The Brothers Karamazov?',
       option1: 'All three brothers die in the end.',
       option2: 'One brother commits suicide and one other is hung.',
       option3: 'One brother marries and then leaves his spouse to join a monastery',
@@ -341,3 +349,4 @@ function shuffleQuestions(Q_A) {
   return Q_A;
 }
 });
+
