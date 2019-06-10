@@ -53,25 +53,25 @@ function answerTemplate(result) {
   const i = questions.length -1; 
 
   return `<header class="answer_page_h1">
-    <h1>${result}</h1>
+    <h1>${correct_answers} of 10 correct</h1>
   </header>
 
   <section class="answer_page">
-    <header>
-      <h2>${questions[i].question}</h2>
+    <header class="answer_page_h2">
+      <h2>${result}</h2>
     </header>
-    <fieldset class="answer_field">
+    <fieldset class="answer_field question_form">
       <div class="answer">
         <input type="radio" name="answer" checked>
         <span>${questions[i].answer}</span>
       </div>
-      <a href=${questions[i].link}> 
-        <img src="${questions[i].image}" alt="book cover">
-      </a>
     </fieldset>
+    <a href=${questions[i].link} class="image"> 
+      <img src="${questions[i].image}" alt="book cover">
+    </a>
     <div class="button_container">
       <button type="button" class="next_button">Next</button>
-      <p class="score">${correct_answers} of 10 correct!</p>
+      <p class="score"></p>
     </div>
   </section>`;
 }
@@ -160,7 +160,6 @@ function handleSubmitButton() {
     const answer = selected.text(); 
     const result = checkAnswer(answer);
     renderAnswerPage(result);
-    removeQuestion();
   });
 }
 
@@ -170,6 +169,7 @@ function handleNextButton() {
     if (testFinished()) {
       renderResultsPage();
     } else {
+      removeQuestion();
       renderQuestionPage();
     }
   });

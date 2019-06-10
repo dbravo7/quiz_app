@@ -6,7 +6,7 @@ font-family: 'Source Sans Pro', sans-serif; */
  /* border: 1px solid black; */
 }
 
-html {
+html, body {
   padding: 0;
   margin: 0; 
   background: url('images/library-header copy.jpg') no-repeat center center fixed;
@@ -28,7 +28,7 @@ fieldset {
   border: none; 
 }
 
-.main_page_h1 {
+.start_page_h1 {
   text-align: center;
   margin-top: 20%;
   font-size: 1.5em;
@@ -40,7 +40,7 @@ fieldset {
 		3px 3px 0  #402708;
 }
 
-.start_page, .question_page, .answer_page, .final_page {
+.start_page, .question_page, .answer_page, .final_page, .answer_field {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -48,25 +48,26 @@ fieldset {
    
 }
 
-.start_page_h2 { 
-  color: #004D73;
-  font-size: 1em;
-  text-shadow: 3px 3px 4px #05F2BF;
-  text-align: center; 
-  margin-bottom: 15px; 
-  background-color: rgba(255, 165, 56, 0.5);
-}
-
-.question_page_h1 {
+.question_page_h1, .answer_page_h1 {
+  margin-left: 5px; 
   text-align: left;
   font-size: 1.2em; 
-  margin-top: 20%;
   color: #BF7417; 
   text-shadow: 
 		-2px -2px 0  #402708,
 		2px -2px 0  #402708,
 		-2px 2px 0  #402708,
 		2px 2px 0  #402708;
+}
+
+.start_page_h2, .answer_page_h2 { 
+  color: #004D73;
+  font-size: 1em;
+  text-shadow: 3px 3px 4px #05F2BF;
+  text-align: center; 
+  margin-bottom: 15px; 
+  background-color: rgba(255, 165, 56, 0.5);
+  width: 100%; 
 }
 
 .start_button {
@@ -88,7 +89,7 @@ span {
   margin: 5px 0px 5px 5px;
 }
 
-.option {
+.option, .answer {
   display: flex; 
 }
 
@@ -106,11 +107,11 @@ label:hover {
   background-color: rgba(5, 242, 191, 0.5);
 }
 
-.selected {
+/* .selected {
   background-color: rgba(5, 242, 191, 0.5);
-}
+} */
 
-.light {
+.light, .answer {
   background-color: rgba(255, 165, 56, 0.80)
 }
 
@@ -120,12 +121,14 @@ label:hover {
 
 .question_page_button:focus, 
 .start_button:focus,
+.next_button:focus,
 .question_page_button:hover,
-.start_button:hover {
+.start_button:hover,
+.next_button:hover {
   background-color: #CC9F0E;
 }
 
-.question_page_button {
+.question_page_button, .next_button {
   margin-top: 15px; 
   width: 150px;
   height: 40px;
@@ -153,4 +156,22 @@ input:checked {
 
 .button_container {
   text-align: center; 
+}
+
+.answer_field {
+  width: 100%; 
+}
+
+.image {
+  -moz-box-shadow: 12px 12px 2px 1px rgba(64, 39, 8, 0.5);
+  -webkit-box-shadow:12px 12px 2px 1px rgba(64, 39, 8, 0.5);
+  box-shadow: 12px 12px 2px 1px rgba(64, 39, 8, 0.5);
+}
+
+img {
+  object-fit: cover; 
+  height: 255px;
+  width: 175px; 
+  display: block;
+  
 }
