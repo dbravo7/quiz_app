@@ -25,7 +25,7 @@ h1, h2 {
 }
 
 fieldset {
-  border: none; 
+  border: none;
 }
 
 .start_page_h1 {
@@ -40,7 +40,9 @@ fieldset {
 		3px 3px 0  #402708;
 }
 
-.start_page, .question_page, .answer_page, .final_page, .answer_field {
+.start_page, .question_page,
+.answer_page, .final_page,
+.answer_field {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -48,7 +50,7 @@ fieldset {
    
 }
 
-.question_page_h1, .answer_page_h1 {
+.question_page_h1, .answer_page_h1, .results_page_h1 {
   margin-left: 5px; 
   text-align: left;
   font-size: 1.2em; 
@@ -60,7 +62,7 @@ fieldset {
 		2px 2px 0  #402708;
 }
 
-.start_page_h2, .answer_page_h2 { 
+.start_page_h2, .answer_page_h2, .final_page_h2 { 
   color: #004D73;
   font-size: 1em;
   text-shadow: 3px 3px 4px #05F2BF;
@@ -87,6 +89,7 @@ fieldset {
 span {
   display: inline-block; 
   margin: 5px 0px 5px 5px;
+  padding: 2px; 
 }
 
 .option, .answer {
@@ -95,12 +98,16 @@ span {
 
 input {
   align-self: center; 
-  margin-left: 10px; 
-  text-shadow: 1px 1px grey; 
+  margin-left: 5px;
+  margin-right: 5px;  
 }
 
 label {
   margin: 10px 0px 10px 0px; 
+}
+
+.option, .answer {
+  font-size: 18px;
 }
 
 label:hover {
@@ -122,13 +129,15 @@ label:hover {
 .question_page_button:focus, 
 .start_button:focus,
 .next_button:focus,
+.restart_button:focus,
 .question_page_button:hover,
 .start_button:hover,
-.next_button:hover {
+.next_button:hover,
+.restart_button:hover {
   background-color: #CC9F0E;
 }
 
-.question_page_button, .next_button {
+.question_page_button, .next_button, .restart_button {
   margin-top: 15px; 
   width: 150px;
   height: 40px;
@@ -163,9 +172,9 @@ input:checked {
 }
 
 .image {
-  -moz-box-shadow: 12px 12px 2px 1px rgba(64, 39, 8, 0.5);
-  -webkit-box-shadow:12px 12px 2px 1px rgba(64, 39, 8, 0.5);
-  box-shadow: 12px 12px 2px 1px rgba(64, 39, 8, 0.5);
+  -moz-box-shadow: 8px 8px 4px 1px rgba(64, 39, 8, 0.5);
+  -webkit-box-shadow: 8px 8px 4px 1px rgba(64, 39, 8, 0.5);
+  box-shadow: 8px 8px 4px 1px rgba(64, 39, 8, 0.5);
 }
 
 img {
@@ -173,5 +182,29 @@ img {
   height: 255px;
   width: 175px; 
   display: block;
-  
+}
+
+table {
+  border-spacing: 0px 10px;
+  margin-left: 10px; 
+  margin-right: 10px; 
+}
+
+td {
+  font-size: 20px; 
+}
+
+.col_1_header {
+  padding: 3px; 
+}
+
+.col_1 {
+  padding: 3px;
+  color: #004D73;
+  font-weight: bold; 
+  text-align: center; 
+}
+
+.col_2 {
+  padding: 2px; 
 }
