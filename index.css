@@ -91,7 +91,6 @@ fieldset {
 
 span {
   display: inline-block; 
-  /* margin: 5px 0px 5px 5px; */
   padding: 10px 5px 10px 10px; 
 }
 
@@ -206,8 +205,6 @@ th, td {
   padding: 10px;
 }
 
-
-
 .col_1 {
   color: #004D73;
   font-weight: bold; 
@@ -319,9 +316,5 @@ th, td {
 
   .question_page_h1, .answer_page_h1, .results_page_h1 {
     margin-left: 80px;
-  }
-
-  .start_page_h1 {
-    width: 100%; 
   }
 }
