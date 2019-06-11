@@ -194,14 +194,6 @@ function increaseScore() {
   correct_answers++;
 }
 
-// function highlightCheckedLabel() {
-//   $("input[type=radio]").change(function() {
-//     $("input[type=radio]").parent().removeClass('selected');
-//     $("input[type=radio]:checked").parent().addClass('selected');
-//     console.log("I am in the function :)");
-//   });
-// }
-
 // calls to setup and play game
 function takeQuiz() {
   handleStartButton();

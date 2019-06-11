@@ -1,6 +1,5 @@
 * {  
  box-sizing: border-box;
- /* border: 1px solid black;  */
 }
 
 html, body {
@@ -110,6 +109,7 @@ input {
 
 label {
   margin: 10px 0px 10px 0px; 
+  cursor:pointer; 
 }
 
 .option, .answer {
@@ -119,10 +119,6 @@ label {
 label:hover {
   background-color: rgba(5, 242, 191, 0.5);
 }
-
-/* .selected {
-  background-color: rgba(5, 242, 191, 0.5);
-} */
 
 .light, .answer {
   background-color: rgba(255, 165, 56, 0.80)
